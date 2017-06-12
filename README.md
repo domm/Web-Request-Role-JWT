@@ -28,7 +28,9 @@ version 0.900
 
 `Web::Request::Role::JWT` provides a few accessor and helper methods
 that make accessing JSON Web Tokens (JWT) stored in your PSGI `$env`
-easier. It works especially well when used with
+easier.
+
+It works especially well when used with
 [Plack::Middleware::Auth::JWT](https://metacpan.org/pod/Plack::Middleware::Auth::JWT), which will validate the token and
 extract the payload into the PSGI `$env`.
 

@@ -6,7 +6,8 @@ use HTTP::Request::Common;
 use Plack::Test;
 use Plack::Builder;
 use Web::Request;
-use Crypt::JWT qw(encode_jwt);
+use Plack::Middleware::PrettyException;
+use Plack::Middleware::Auth::JWT;
 
 use utf8;
 
