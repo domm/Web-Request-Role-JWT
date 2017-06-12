@@ -2,7 +2,7 @@ package Web::Request::Role::JWT;
 
 # ABSTRACT: Accessors for JSON Web Token (JWT) stored in psgix
 
-our $VERSION = '0.900';
+our $VERSION = '1.000';
 
 use 5.010;
 use Moose::Role;

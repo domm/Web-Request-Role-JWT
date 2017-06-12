@@ -1,5 +1,8 @@
 Revision history for Web::Request::Role::JWT
 
-0.900	2017-06-12T11:58:37
-    - first release
+1.000	2017-06-12T12:04:25
+
+
+0.900	2017-06-12T11:59:02
+    - extracted from various Validad tools, added docs, added tests
 

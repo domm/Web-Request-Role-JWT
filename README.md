@@ -4,7 +4,7 @@ Web::Request::Role::JWT - Accessors for JSON Web Token (JWT) stored in psgix
 
 # VERSION
 
-version 0.900
+version 1.000
 
 # SYNOPSIS
 
