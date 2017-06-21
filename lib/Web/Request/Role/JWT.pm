@@ -7,6 +7,7 @@ our $VERSION = '1.000';
 use 5.010;
 use Moose::Role;
 use HTTP::Throwable::Factory qw(http_throw);
+use Log::Any qw($log);
 
 =method get_jwt
 
@@ -90,6 +91,7 @@ sub requires_jwt {
     my $token = $self->get_jwt;
     return $token if $token;
 
+    $log->error("No JWT found in request");
     http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
 }
 
@@ -107,6 +109,7 @@ sub requires_jwt_claims {
     my $claims = $self->get_jwt_claims;
     return $claims if $claims;
 
+    $log->error("No claims found in JWT");
     http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
 }
 
@@ -125,6 +128,7 @@ sub requires_jwt_claim_sub {
 
     return $sub if $sub;
 
+    $log->error("Claim 'sub' not found in JWT");
     http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
 }
 
@@ -157,6 +161,12 @@ easier.
 It works especially well when used with
 L<Plack::Middleware::Auth::JWT>, which will validate the token and
 extract the payload into the PSGI C<$env>.
+
+=head1 METHODS
+
+=head2 requires_* and logging
+
+If a C<requires_*> method fails, it will log an error via L<Log::Any>.
 
 =head1 THANKS
 
