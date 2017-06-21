@@ -132,6 +132,26 @@ sub requires_jwt_claim_sub {
     http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
 }
 
+=method requires_jwt_claim_aud
+
+  my $aud = $req->requires_jwt_claim_aud;
+
+Returns the C<aud> claim. If the C<aud> claim is missing, throws a L<HTTP::Throwable::Role::Status::Unauthorized> exception (aka HTTP Status 401)
+
+=cut
+
+sub requires_jwt_claim_aud {
+    my $self = shift;
+
+    my $sub = $self->get_jwt_claim_aud;
+
+    return $sub if $sub;
+
+    $log->error("Claim 'aud' not found in JWT");
+    http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
+}
+
+
 1;
 
 =head1 SYNOPSIS
