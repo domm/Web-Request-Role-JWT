@@ -4,7 +4,7 @@ Web::Request::Role::JWT - Accessors for JSON Web Token (JWT) stored in psgix
 
 # VERSION
 
-version 1.000
+version 1.001
 
 # SYNOPSIS
 
@@ -35,6 +35,10 @@ It works especially well when used with
 extract the payload into the PSGI `$env`.
 
 # METHODS
+
+## requires\_\* and logging
+
+If a `requires_*` method fails, it will log an error via [Log::Any](https://metacpan.org/pod/Log::Any).
 
 ## get\_jwt
 
@@ -83,6 +87,12 @@ Returns all the claims as a hashref. If no claims are available, throws a [HTTP:
     my $sub = $req->requires_jwt_claim_sub;
 
 Returns the `sub` claim. If the `sub` claim is missing, throws a [HTTP::Throwable::Role::Status::Unauthorized](https://metacpan.org/pod/HTTP::Throwable::Role::Status::Unauthorized) exception (aka HTTP Status 401)
+
+## requires\_jwt\_claim\_aud
+
+    my $aud = $req->requires_jwt_claim_aud;
+
+Returns the `aud` claim. If the `aud` claim is missing, throws a [HTTP::Throwable::Role::Status::Unauthorized](https://metacpan.org/pod/HTTP::Throwable::Role::Status::Unauthorized) exception (aka HTTP Status 401)
 
 # THANKS
 
