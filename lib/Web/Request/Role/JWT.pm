@@ -2,7 +2,7 @@ package Web::Request::Role::JWT;
 
 # ABSTRACT: Accessors for JSON Web Token (JWT) stored in psgix
 
-our $VERSION = '1.001';
+# VERSION
 
 use 5.010;
 use Moose::Role;
@@ -150,7 +150,6 @@ sub requires_jwt_claim_aud {
     $log->error("Claim 'aud' not found in JWT");
     http_throw( 'Unauthorized' => { www_authenticate => 'bearer' } );
 }
-
 
 1;
 

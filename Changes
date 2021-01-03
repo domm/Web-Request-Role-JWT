@@ -1,5 +1,10 @@
 Revision history for Web::Request::Role::JWT
 
+{{$NEXT}}
+    - dist housekeeping: github issues,
+      Dist::Zilla::PluginBundle::Author::DOMM
+
+
 1.001   2017-06-21T14:00:53
     - add requires_jwt_claim_aud
     - requires_* fails are now logged via Log::Any
